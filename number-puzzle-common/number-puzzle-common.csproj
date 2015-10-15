@@ -37,7 +37,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Layout.cs" />
+    <Compile Include="Layout8Cross.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sequence.cs" />
     <Compile Include="Square.cs" />

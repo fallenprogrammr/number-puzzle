@@ -1,63 +1,14 @@
 ﻿namespace NumberPuzzle.Common
 {
-    public class Layout
+    public class Layout8Cross
     {
-        public static void PopulateWithSequence(Square[] layout, Sequence sequence)
+        public static Square[] InitializeWithSequence(int[] sequence)
         {
-            for (int i = 0; i <= 7; i++)
-            {
-                layout[i].Value = sequence.NumberSequence[i];
-            }
-        }
-
-        public static bool IsValid(Square[] layout)
-        {
-            for (int i = 0; i < 7; i++)
-            {
-
-                if (!(IsAdjacentValueValid(layout[i].Value, layout[i].Above) &&
-                    IsAdjacentValueValid(layout[i].Value, layout[i].Below) &&
-                    IsAdjacentValueValid(layout[i].Value, layout[i].Left) &&
-                    IsAdjacentValueValid(layout[i].Value, layout[i].Right) &&
-                    IsAdjacentValueValid(layout[i].Value, layout[i].LeftAcrossAbove) &&
-                    IsAdjacentValueValid(layout[i].Value, layout[i].LeftAcrossBelow) &&
-                    IsAdjacentValueValid(layout[i].Value, layout[i].RightAcrossAbove) &&
-                    IsAdjacentValueValid(layout[i].Value, layout[i].RightAcrossBelow)))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private static bool IsAdjacentValueValid(int referenceValue, Square adjacentBlock)
-        {
-            if (adjacentBlock != null)
-            {
-                if(!IsValueValid(referenceValue, adjacentBlock.Value))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private static bool IsValueValid(int referenceValue, int valueToCheck)
-        {
-            if ((valueToCheck == referenceValue + 1) || (valueToCheck == referenceValue - 1))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public static void Initialize(Square[] layout)
-        {
+            var layout = new Square[8];
             for (int i = 0; i < layout.Length; i++)
             {
                 layout[i] = new Square();
             }
-
             layout[0].Above = null;
             layout[0].Left = null;
             layout[0].Right = layout[1];
@@ -129,6 +80,59 @@
             layout[7].LeftAcrossBelow = null;
             layout[7].RightAcrossAbove = layout[5];
             layout[7].RightAcrossBelow = null;
+
+            PopulateWithSequence(layout, sequence);
+
+            return layout;
         }
+
+        private static void PopulateWithSequence(Square[] layout, int[] sequence)
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                layout[i].Value = sequence[i];
+            }
+        }
+
+        public static bool IsValid(Square[] layout)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+
+                if (!(IsAdjacentValueValid(layout[i].Value, layout[i].Above) &&
+                    IsAdjacentValueValid(layout[i].Value, layout[i].Below) &&
+                    IsAdjacentValueValid(layout[i].Value, layout[i].Left) &&
+                    IsAdjacentValueValid(layout[i].Value, layout[i].Right) &&
+                    IsAdjacentValueValid(layout[i].Value, layout[i].LeftAcrossAbove) &&
+                    IsAdjacentValueValid(layout[i].Value, layout[i].LeftAcrossBelow) &&
+                    IsAdjacentValueValid(layout[i].Value, layout[i].RightAcrossAbove) &&
+                    IsAdjacentValueValid(layout[i].Value, layout[i].RightAcrossBelow)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static bool IsAdjacentValueValid(int referenceValue, Square adjacentBlock)
+        {
+            if (adjacentBlock != null)
+            {
+                if(!IsValueValid(referenceValue, adjacentBlock.Value))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static bool IsValueValid(int referenceValue, int valueToCheck)
+        {
+            if ((valueToCheck == referenceValue + 1) || (valueToCheck == referenceValue - 1))
+            {
+                return false;
+            }
+            return true;
+        }        
     }
 }

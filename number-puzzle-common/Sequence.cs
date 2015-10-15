@@ -1,36 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace NumberPuzzle.Common
 {
     public class Sequence
     {
-        public int[] NumberSequence { get; set; }
-        public Sequence()
-        {
-            NumberSequence = new int[8];
-        }
-
-        public static Sequence GetRandomSequence(List<Sequence> occurredSequences)
+        public static int[] GetRandomIntegerArray(int min, int max)
         {
             Random rnd = new Random();
-            var sequence = new Sequence();
-            do
+            var numberSequence = new int[max];
+            for (int i = 0; i <= 7; i++)
             {
-                for (int i = 0; i <= 7; i++)
+                int nextNumber;
+                do
                 {
-                    int nextNumber;
-                    do
-                    {
-                        nextNumber = rnd.Next(1, 9);
-                    }
-                    while (sequence.NumberSequence.Contains(nextNumber));
-                    sequence.NumberSequence[i] = nextNumber;
+                    nextNumber = rnd.Next(min, max+1);
                 }
-            } while (occurredSequences.Contains(sequence));
-            occurredSequences.Add(sequence);
-            return sequence;
+                while (numberSequence.Contains(nextNumber));
+                numberSequence[i] = nextNumber;
+            }
+            return numberSequence;
         }
     }
 }
