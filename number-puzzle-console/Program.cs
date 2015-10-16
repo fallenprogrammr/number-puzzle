@@ -8,14 +8,26 @@ namespace number_puzzle
     {
         static void Main(string[] args)
         {
-            var layout = new Square[8];
-            var occurredSequences = new List<Sequence>();
-            Layout.Initialize(layout);
+            Layout8CrossConsoleDisplay.Draw();
+
+            Console.ReadKey();
+            Environment.Exit(0);
+
+
+            Square[] layout;
+            var occurredSequences = new List<int[]>();
+            int[] sequence;
             do
             {
-                Layout.PopulateWithSequence(layout, Sequence.GetRandomSequence(occurredSequences));
+                do
+                {
+                    sequence = Sequence.GetRandomIntegerArray(1, 8);
+                }
+                while (occurredSequences.Contains(sequence));
+                occurredSequences.Add(sequence);
+                layout = Layout8Cross.InitializeWithSequence(sequence);
             }
-            while (!Layout.IsValid(layout));
+            while (!Layout8Cross.IsValid(layout));
             PrintLayout(layout);
             Console.ReadKey();
         }
@@ -29,6 +41,6 @@ namespace number_puzzle
                 Console.Write(item.Value + " ");
             }
         }
-        
+
     }
 }

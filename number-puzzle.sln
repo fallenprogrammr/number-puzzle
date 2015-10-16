@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "number-puzzle-console", ".\number-puzzle-console\number-puzzle-console.csproj", "{A236FAF5-00CD-4EDE-AEC6-6014146C7A30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "number-puzzle-console", "number-puzzle-console\number-puzzle-console.csproj", "{A236FAF5-00CD-4EDE-AEC6-6014146C7A30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "number-puzzle-common", ".\number-puzzle-common\number-puzzle-common.csproj", "{10674FA8-AD69-4B29-B8E4-1BF6C6B43E68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "number-puzzle-common", "number-puzzle-common\number-puzzle-common.csproj", "{10674FA8-AD69-4B29-B8E4-1BF6C6B43E68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
